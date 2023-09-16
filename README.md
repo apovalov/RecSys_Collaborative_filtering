@@ -1,4 +1,4 @@
-# SKU_Pricing-Recommendations
+![image](https://github.com/apovalov/SKU_Pricing-Recommendations/assets/43651275/2d5e61be-2879-42d7-8bec-ad8d35a7267b)# SKU_Pricing-Recommendations
 
 
 
@@ -31,7 +31,8 @@ So, if we want to understand how similar two users are, we can count how many of
 
 Both problems can be solved at once by representing the original sales history as a User-Item matrix, where element x ij is the number of purchases by user i of product j. Then, by calculating the cosine proximity between the two rows we will know how similar two users are; and between the columns we will know how similar two products are.
 
-https://storage.yandexcloud.net/klms-public/production/learning-content/55/1230/14536/41986/200014/User-Item%20matrix%20Karpov%20Courses%20style.png
+![User-Item matrix Karpov Courses style](https://github.com/apovalov/SKU_Pricing-Recommendations/assets/43651275/28f3ec5b-cbfc-4c6c-a6ce-f340447d34cb)
+
 
 ##Normalization
 
@@ -63,7 +64,8 @@ TF is the ratio of the number of occurrences of a word to the total number of wo
 
 IDF - inverse frequency, is the ratio of the total number of documents in the collection to the number of documents containing the word. Logarithm reduces the weight of commonly used words
 
-https://storage.yandexcloud.net/klms-public/production/learning-content/55/1230/14536/41986/211800/1234.png
+![1234](https://github.com/apovalov/SKU_Pricing-Recommendations/assets/43651275/79e3c5e7-d9fd-46cc-afd7-83d9919fdb5e)
+
 
 Rows - documents, columns - words. The intersection is the number of occurrences of words.
 If we imagine that users are documents and words are goods, then we can apply the formula for calculating TF-IDF coefficients for each user-good pair.
