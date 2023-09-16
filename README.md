@@ -111,6 +111,7 @@ group_diversity - metric for calculating the diversity of a group of products
 
 
 ##FastAPI service
+![Новый проект (8)](https://github.com/apovalov/SKU_Pricing-Recommendations/assets/43651275/719ee629-936e-4983-af82-b85780bf87c8)
 
 load_embeddings - loads all embeddings every 10 seconds.
 
