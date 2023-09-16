@@ -1,6 +1,6 @@
 # SKU_Pricing-Recommendations
 
-##UserItemMatrix
+## UserItemMatrix
 
 UserItemMatrix class that creates a User-Item matrix for aggregated data.
 
@@ -32,7 +32,7 @@ Both problems can be solved at once by representing the original sales history a
 ![User-Item matrix Karpov Courses style](https://github.com/apovalov/SKU_Pricing-Recommendations/assets/43651275/28f3ec5b-cbfc-4c6c-a6ce-f340447d34cb)
 
 
-##Normalization
+## Normalization
 
 What if the average sales for a few User-Item pairs are 10 to 100 times larger for all others?
 
@@ -68,7 +68,7 @@ IDF - inverse frequency, is the ratio of the total number of documents in the co
 Rows - documents, columns - words. The intersection is the number of occurrences of words.
 If we imagine that users are documents and words are goods, then we can apply the formula for calculating TF-IDF coefficients for each user-good pair.
 
-##SimilarItems
+## SimilarItems
 
 Similar Items Price
 When we estimate the number of sales in dynamic pricing or demand forecasting tasks, price and related attributes usually provide the strongest signal:
@@ -95,7 +95,7 @@ knn_price - the function takes as input the result of the knn function and the p
 transform - transforms the original embedding dictionary into a dictionary with new prices for all products.
 
 
-##Item uniqueness
+## Item uniqueness
 
 knn_uniqueness - evaluates the uniqueness of each product (uniqueness), how far the product's embedding is removed (isolated) from other embeddings. The more distant an embedding is in n-dimensional space from other embeddings, the greater its uniqueness metric value. 
 
@@ -110,7 +110,7 @@ For us, the density at the point where the embedding is located will be an estim
 group_diversity - metric for calculating the diversity of a group of products
 
 
-##FastAPI service
+## FastAPI service
 ![Новый проект (8)](https://github.com/apovalov/SKU_Pricing-Recommendations/assets/43651275/719ee629-936e-4983-af82-b85780bf87c8)
 
 load_embeddings - loads all embeddings every 10 seconds.
