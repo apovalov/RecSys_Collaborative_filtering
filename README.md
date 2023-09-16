@@ -93,3 +93,27 @@ knn - the function takes as input the result of the similarity function and the 
 knn_price - the function takes as input the result of the knn function and the price dictionary with prices for each item. The output is the weighted average price of the top nearest neighbors. 
 
 transform - transforms the original embedding dictionary into a dictionary with new prices for all products.
+
+
+##Item uniqueness
+
+knn_uniqueness - evaluates the uniqueness of each product (uniqueness), how far the product's embedding is removed (isolated) from other embeddings. The more distant an embedding is in n-dimensional space from other embeddings, the greater its uniqueness metric value. 
+
+kde_uniqueness - Kernel Density Estimation 
+
+We "smear" the distribution around each object by representing it with a Gaussian (multivariate normal distribution, essentially a sphere) with a given variance (a given radius). This is called a Kernel-trick.
+We then add up all the distributions that have been created. 
+Those places where many Gaussians (many embeddings) have been lumped together will get an overlap of several distributions. After normalization (the total density of the distribution is 1), we get the density estimate we are looking for.
+
+For us, the density at the point where the embedding is located will be an estimate of its uniqueness.
+
+group_diversity - metric for calculating the diversity of a group of products
+
+
+##FastAPI service
+
+load_embeddings - loads all embeddings every 10 seconds.
+
+GET request /uniqueness - which asks to evaluate a selection of items. Expects item ID → uniqueness to be displayed in the response.
+
+GET request /diversity - which accepts a selection of items as input. It returns a diversity metric and a verdict to "reject" or "accept" this output.
