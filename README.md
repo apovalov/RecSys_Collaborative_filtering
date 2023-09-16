@@ -1,6 +1,4 @@
-![image](https://github.com/apovalov/SKU_Pricing-Recommendations/assets/43651275/2d5e61be-2879-42d7-8bec-ad8d35a7267b)# SKU_Pricing-Recommendations
-
-
+# SKU_Pricing-Recommendations
 
 ##UserItemMatrix
 
