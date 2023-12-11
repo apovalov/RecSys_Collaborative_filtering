@@ -1,4 +1,4 @@
-# SKU_Pricing-Recommendations
+# SKU Pricing Recommendations
 
 ## UserItemMatrix
 
@@ -8,14 +8,14 @@ The class contains 5 methods - they return information about the object. They ar
 
 Since they are @property - calculations need to be done in the init method, returning private variables within each method.
 
-The user_map and item_map methods return mappings with sorted keys - the original user_id and item_id. 
+The user_map and item_map methods return mappings with sorted keys - the original user_id and item_id.
 
 
 There are 3 main ways to build embeddings for items:
 
-Based on content (picture, title, item description).
-Based on sales history (history of who bought what items in the past).
-Based on user sessions (history of what products our users are looking at).
+1. Based on content (picture, title, item description).
+2. Based on sales history (history of who bought what items in the past).
+3. Based on user sessions (history of what products our users are looking at).
 
 We will focus on the second method.
 
@@ -23,7 +23,7 @@ Its essence is as follows:
 
 Each product is characterized by the users who bought it.
 Each user is characterized by the products they bought.
-There seems to be a two-way relationship between goods and users. Methods based on the premise "similar users - buy similar products" are called collaborative filtering (co-filtering). 
+There seems to be a two-way relationship between goods and users. Methods based on the premise "similar users - buy similar products" are called collaborative filtering (co-filtering).
 
 So, if we want to understand how similar two users are, we can count how many of each product each user bought - and count the overlap. On the other hand, if we want to understand how similar two products are, we can just compare all users who bought them.
 
@@ -36,7 +36,7 @@ Both problems can be solved at once by representing the original sales history a
 
 What if the average sales for a few User-Item pairs are 10 to 100 times larger for all others?
 
-As on any other tabular data, we can perform a normalization of the User-Item matrix. 
+As on any other tabular data, we can perform a normalization of the User-Item matrix.
 
 1. Line by line.
 2. Column by column.
@@ -49,7 +49,7 @@ TF is the ratio of the number of occurrences of a word to the total number of wo
 
 IDF - inverse frequency, is the ratio of the total number of documents in the collection to the number of documents containing the word. The logarithm reduces the weight of commonly used wordsWhat if the average sales for a few User-Item pairs are 10 to 100 times greater for all others?
 
-As on any other tabular data, we can perform a normalization of the User-Item matrix. 
+As on any other tabular data, we can perform a normalization of the User-Item matrix.
 
 Line by line.
 Column by column.
@@ -67,6 +67,8 @@ IDF - inverse frequency, is the ratio of the total number of documents in the co
 
 Rows - documents, columns - words. The intersection is the number of occurrences of words.
 If we imagine that users are documents and words are goods, then we can apply the formula for calculating TF-IDF coefficients for each user-good pair.
+
+
 
 ## SimilarItems
 
@@ -90,19 +92,19 @@ similarity - counts pairwise similarities between all embeddings, returning a di
 
 knn - the function takes as input the result of the similarity function and the top parameter - the number of nearest neighbors. It outputs a dictionary with item_id - list of top nearest items pairs.
 
-knn_price - the function takes as input the result of the knn function and the price dictionary with prices for each item. The output is the weighted average price of the top nearest neighbors. 
+knn_price - the function takes as input the result of the knn function and the price dictionary with prices for each item. The output is the weighted average price of the top nearest neighbors.
 
 transform - transforms the original embedding dictionary into a dictionary with new prices for all products.
 
 
 ## Item uniqueness
 
-knn_uniqueness - evaluates the uniqueness of each product (uniqueness), how far the product's embedding is removed (isolated) from other embeddings. The more distant an embedding is in n-dimensional space from other embeddings, the greater its uniqueness metric value. 
+knn_uniqueness - evaluates the uniqueness of each product (uniqueness), how far the product's embedding is removed (isolated) from other embeddings. The more distant an embedding is in n-dimensional space from other embeddings, the greater its uniqueness metric value.
 
-kde_uniqueness - Kernel Density Estimation 
+kde_uniqueness - Kernel Density Estimation
 
 We "smear" the distribution around each object by representing it with a Gaussian (multivariate normal distribution, essentially a sphere) with a given variance (a given radius). This is called a Kernel-trick.
-We then add up all the distributions that have been created. 
+We then add up all the distributions that have been created.
 Those places where many Gaussians (many embeddings) have been lumped together will get an overlap of several distributions. After normalization (the total density of the distribution is 1), we get the density estimate we are looking for.
 
 For us, the density at the point where the embedding is located will be an estimate of its uniqueness.
@@ -118,3 +120,8 @@ load_embeddings - loads all embeddings every 10 seconds.
 GET request /uniqueness - which asks to evaluate a selection of items. Expects item ID → uniqueness to be displayed in the response.
 
 GET request /diversity - which accepts a selection of items as input. It returns a diversity metric and a verdict to "reject" or "accept" this output.
+
+
+1. Matrix: User - Item
+2. Matrix Normalization // Rows/Columns or TF-IDF or BM-25
+3. Matrix Factorization -> Embeddings
