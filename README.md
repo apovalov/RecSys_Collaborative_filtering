@@ -4,14 +4,6 @@
 2. Make Item Embeddings
 3. ItemUniquiness & FastAPiService
 
-To calculate the distance between two goods (e.g., Euclidean or cosine distance), we need to learn how to map them into a multidimensional space ("goods space"). A point in this space (essentially a vector of numbers), is called an embedding.
-
-![Screenshot 2024-02-04 at 21 38 08](https://github.com/apovalov/RecSys_SKU_Embs_TF_IDF/assets/43651275/c8a62d7b-21dd-4c9e-b361-e4cc6b1340f4)
-![Screenshot 2024-02-04 at 21 38 28](https://github.com/apovalov/RecSys_SKU_Embs_TF_IDF/assets/43651275/1a918d0d-0221-4e8d-a96a-91ab4c8ab15e)
-
-If we think of embedding as a directional vector, then cosine similarity shows how much the two vectors are co-directional (given possibly different vector lengths). A popular metric for word embeddings.
-![Screenshot 2024-02-04 at 21 39 10](https://github.com/apovalov/RecSys_SKU_Embs_TF_IDF/assets/43651275/d78fd832-c9af-4cfa-9ab4-6071efbd496a)
-
 ## UserItemMatrix
 
 UserItemMatrix class that creates a User-Item matrix for aggregated data.
@@ -80,6 +72,14 @@ IDF - inverse frequency, is the ratio of the total number of documents in the co
 Rows - documents, columns - words. The intersection is the number of occurrences of words.
 If we imagine that users are documents and words are goods, then we can apply the formula for calculating TF-IDF coefficients for each user-good pair.
 
+To calculate the distance between two goods (e.g., Euclidean or cosine distance), we need to learn how to map them into a multidimensional space ("goods space"). A point in this space (essentially a vector of numbers), is called an embedding.
+
+![Screenshot 2024-02-04 at 21 38 08](https://github.com/apovalov/RecSys_SKU_Embs_TF_IDF/assets/43651275/c8a62d7b-21dd-4c9e-b361-e4cc6b1340f4)
+![Screenshot 2024-02-04 at 21 38 28](https://github.com/apovalov/RecSys_SKU_Embs_TF_IDF/assets/43651275/1a918d0d-0221-4e8d-a96a-91ab4c8ab15e)
+
+If we think of embedding as a directional vector, then cosine similarity shows how much the two vectors are co-directional (given possibly different vector lengths). A popular metric for word embeddings.
+
+![Screenshot 2024-02-04 at 21 39 10](https://github.com/apovalov/RecSys_SKU_Embs_TF_IDF/assets/43651275/d78fd832-c9af-4cfa-9ab4-6071efbd496a)
 
 
 ## SimilarItems
@@ -99,14 +99,11 @@ Discount = price / price_before_discount - 1.
 Margin = 100% * (1 - purchase_price / price).
 Relation_to_market = price / competitor_price.
 
-
 similarity - counts pairwise similarities between all embeddings, returning a dictionary of similarities.
-
 knn - the function takes as input the result of the similarity function and the top parameter - the number of nearest neighbors. It outputs a dictionary with item_id - list of top nearest items pairs.
-
 knn_price - the function takes as input the result of the knn function and the price dictionary with prices for each item. The output is the weighted average price of the top nearest neighbors.
-
 transform - transforms the original embedding dictionary into a dictionary with new prices for all products.
+
 
 
 ## Item uniqueness
