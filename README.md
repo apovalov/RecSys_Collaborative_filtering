@@ -1,4 +1,16 @@
-# SKU Pricing Recommendations
+# RecSys: SKU Collaborative filtering 
+
+1. User-Item Matrix
+2. Make Item Embeddings
+3. ItemUniquiness & FastAPiService
+
+To calculate the distance between two goods (e.g., Euclidean or cosine distance), we need to learn how to map them into a multidimensional space ("goods space"). A point in this space (essentially a vector of numbers), is called an embedding.
+
+![Screenshot 2024-02-04 at 21 38 08](https://github.com/apovalov/RecSys_SKU_Embs_TF_IDF/assets/43651275/c8a62d7b-21dd-4c9e-b361-e4cc6b1340f4)
+![Screenshot 2024-02-04 at 21 38 28](https://github.com/apovalov/RecSys_SKU_Embs_TF_IDF/assets/43651275/1a918d0d-0221-4e8d-a96a-91ab4c8ab15e)
+
+If we think of embedding as a directional vector, then cosine similarity shows how much the two vectors are co-directional (given possibly different vector lengths). A popular metric for word embeddings.
+![Screenshot 2024-02-04 at 21 39 10](https://github.com/apovalov/RecSys_SKU_Embs_TF_IDF/assets/43651275/d78fd832-c9af-4cfa-9ab4-6071efbd496a)
 
 ## UserItemMatrix
 
